@@ -12,4 +12,4 @@ Business Analyst (PMP, PMI-ACP) focused on requirements, process mapping, UAT, s
 All three use sanitized or fictional sample data. No production data, real customer names, credentials or PHI.
 
 ## Contact
-wsejoel@gmail.com | [LinkedIn](https://www.linkedin.com/in/wilsonpro/)
+wsejoel@gmail.com | [LinkedIn](https://www.linkedin.com/in/wilsonjoel/)
