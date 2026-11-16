@@ -1,14 +1,15 @@
 # Wilson Joel | Business Analyst Portfolio
 
-Business Analyst (PMP, PMI-ACP) focused on requirements, process mapping, UAT, systems integration and Agile delivery.
+Business Analyst (PMP, PMI-ACP) focused on requirements, process mapping, UAT, systems integration and data analysis with SQL and Power BI.
 
 **Live site:** https://wilson-joel.github.io/portfolio/
 
 ## Case studies
 1. **Sprint Intake Control (Payments Portfolio):** replacing verbal intake with a mapped, sized intake gate, one dashboard and a release/compliance tracker.
-2. **Systems Integration Requirements (CRM > Billing > Reporting):** source-to-target mapping, exception handling, UAT and data validation.
+2. **Delivery Health Analytics (Power BI + SQL):** a two-page Power BI dashboard and six SQL queries showing that four teams became more predictable while production escapes did not improve. Files in [`delivery-health/`](delivery-health/): the SQL queries, the sample data (Excel) and a SQLite database you can query yourself.
+3. **Systems Integration Requirements (CRM > Billing > Reporting):** source-to-target mapping, exception handling, UAT and data validation.
 
-Both are sanitized examples. No production data, real customer names, credentials or PHI.
+All three use sanitized or fictional sample data. No production data, real customer names, credentials or PHI.
 
 ## Contact
 wsejoel@gmail.com | [LinkedIn](https://www.linkedin.com/in/wilsonpro/)

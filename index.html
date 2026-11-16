@@ -35,6 +35,7 @@ td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 .chips span{display:inline-block;background:#eaf0fb;color:var(--navy);border-radius:999px;padding:3px 12px;margin:3px 4px 3px 0;font-size:.85rem}
 .btn{display:inline-block;background:var(--navy);color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;font-weight:600;margin-top:8px}
 .flow{max-width:340px}
+.grid.full{grid-template-columns:1fr}
 footer{margin-top:40px;padding:28px 0;background:#0a1830;color:#cdd7ea;text-align:center;font-size:.95rem}
 footer a{color:var(--amber)}
 @media(max-width:600px){header h1{font-size:1.7rem}}
@@ -44,9 +45,9 @@ footer a{color:var(--amber)}
 <header><div class="wrap">
 <h1>Wilson Joel</h1>
 <p>Business Analyst | PMP, PMI-ACP | Houston, TX</p>
-<div class="tag">REQUIREMENTS &bull; PROCESS MAPPING &bull; UAT &bull; SYSTEMS INTEGRATION &bull; AGILE DELIVERY</div>
+<div class="tag">REQUIREMENTS &bull; PROCESS MAPPING &bull; UAT &bull; SYSTEMS INTEGRATION &bull; DATA ANALYSIS (SQL, POWER BI)</div>
 <nav>
-<a href="#case1">Case Study 1</a><a href="#case2">Case Study 2</a><a href="#contact">Contact</a>
+<a href="#case1">Intake Control</a><a href="#case2">Delivery Analytics</a><a href="#case3">Systems Integration</a><a href="#contact">Contact</a>
 </nav>
 </div></header>
 
@@ -70,7 +71,7 @@ footer a{color:var(--amber)}
 <p>Owned requirements readiness for the portfolio, including intake analysis, story refinement, acceptance criteria, process mapping, UAT coordination, traceability, and release-readiness tracking. Worked across Product, Engineering, QA, and Compliance to move work from intake through implementation and validation.</p></div>
 
 <div class="card"><h3>The Outcome</h3><ul>
-<li>Measurable drop in last-minute sprint adds over two quarters</li>
+<li>In the sample sprint data, late adds fall from 4 to 1 to 0 across the three sprints after the gate goes live</li>
 <li>A failed UAT case now always produces a linked defect, retest, and traceable close</li>
 <li>Leadership works from one dashboard instead of three local files and a Slack thread</li></ul></div>
 
@@ -90,9 +91,7 @@ footer a{color:var(--amber)}
 <h3 style="margin-top:22px">Artifact 3: Release / Compliance Tracker</h3>
 <div class="grid">
 <figure><a href="UAT-Script-Spreadsheet.png"><img loading="lazy" src="UAT-Script-Spreadsheet.png" alt="UAT script spreadsheet"></a><figcaption>UAT script</figcaption></figure>
-<figure><a href="Release-Compliance-Tracker-Spreadsheet.png"><img loading="lazy" src="Release-Compliance-Tracker-Spreadsheet.png" alt="Release and compliance tracker"></a><figcaption>Release / compliance tracker</figcaption></figure>
-<figure><a href="Sprint-Health-Excel.png"><img loading="lazy" src="Sprint-Health-Excel.png" alt="Sprint health leadership view"></a><figcaption>Sprint health: leadership view</figcaption></figure>
-<figure><a href="Trace-Matrix-Spreadsheet.png"><img loading="lazy" src="Trace-Matrix-Spreadsheet.png" alt="Traceability matrix"></a><figcaption>Traceability: need, story, test, release</figcaption></figure>
+<figure><a href="Release-Compliance-Tracker-Spreadsheet.png"><img loading="lazy" src="Release-Compliance-Tracker-Spreadsheet.png" alt="Release and compliance tracker"></a><figcaption>Release / compliance tracker</figcaption></figure><figure><a href="Trace-Matrix-Spreadsheet.png"><img loading="lazy" src="Trace-Matrix-Spreadsheet.png" alt="Traceability matrix"></a><figcaption>Traceability: need, story, test, release</figcaption></figure>
 </div>
 
 <h3 style="margin-top:22px">Artifact 4: As-Is / To-Be Process Maps</h3>
@@ -105,7 +104,58 @@ footer a{color:var(--amber)}
 </section>
 
 <section id="case2">
-<h2>Case Study 2: Systems Integration Requirements</h2>
+<h2>Case Study 2: Delivery Health Analytics</h2>
+<p class="sub">Power BI + SQL &middot; 4 FinTech teams &middot; 12 sprints</p>
+<div class="note">Built on fictional sample data created for portfolio use. No client or employer data.</div>
+
+<div class="card"><h3>The Question</h3>
+<p>Delivery leaders need two answers every sprint: are teams delivering what they commit to, and is the work holding up after it ships? I built a two-page Power BI dashboard to answer both, then answered the same questions in SQL to check the numbers and go one step further.</p></div>
+
+<div class="card"><h3>What the Data Showed</h3><ul>
+<li><b>Predictability improved:</b> Say/Do rose from 66% in the first sprint to 97% at its peak, and carried-over work fell from 11 items to 1.</li>
+<li><b>Fewer defects overall:</b> new defects fell 29% between the first and second half of the period.</li>
+<li><b>But escapes did not improve:</b> 9 production escapes in each half, so the escape rate rose from 6.8% to 9.6%, peaking at 18.8% in one sprint.</li>
+<li><b>Open defects are aging:</b> 10 of 20 are older than 15 days; the oldest (37 days) includes a Sev 2 found in UAT.</li></ul></div>
+
+<div class="card"><h3>What I Built</h3><ul>
+<li>A star-schema data model: one Sprints table filtering Work Items and Defects, so a single Team slicer drives every visual</li>
+<li>10 DAX measures (Say/Do, capacity utilization, escape rate, average days to resolve), each checked against totals from the source data</li>
+<li>A Delivery page (predictability) and a Quality page (defects, escapes, aging), with color used to point at the story</li>
+<li>Six SQL queries in SQLite that reproduce the dashboard and add a team scorecard joining delivery and quality</li></ul></div>
+
+<h3 style="margin-top:22px">Artifact 1: Power BI Dashboard</h3>
+<div class="grid full">
+<figure><a href="delivery-health/delivery-page.png"><img loading="lazy" src="delivery-health/delivery-page.png" alt="Power BI Delivery page: Say/Do, utilization and carried-over cards, Say/Do trend, committed vs completed points, team by sprint matrix"></a><figcaption>Delivery page: predictability by sprint and team</figcaption></figure>
+<figure><a href="delivery-health/quality-page.png"><img loading="lazy" src="delivery-health/quality-page.png" alt="Power BI Quality page: defect cards, defects by sprint and where found, open defects by age, oldest open defects, open defects by team"></a><figcaption>Quality page: escapes, aging and ownership</figcaption></figure>
+</div>
+
+<h3 style="margin-top:22px">Artifact 2: Model, Measures &amp; Detail</h3>
+<div class="grid">
+<figure><a href="delivery-health/model.png"><img loading="lazy" src="delivery-health/model.png" alt="Power BI model: Sprints linked one-to-many to WorkItems and Defects on SprintKey"></a><figcaption>Star schema: Sprints filters both fact tables</figcaption></figure>
+<figure><a href="delivery-health/dax-say-do.png"><img loading="lazy" src="delivery-health/dax-say-do.png" alt="Say/Do Ratio DAX measure in the formula bar"></a><figcaption>Say/Do = DIVIDE(completed, committed)</figcaption></figure>
+<figure><a href="delivery-health/open-defect-aging.png"><img loading="lazy" src="delivery-health/open-defect-aging.png" alt="Open defects by age bucket and severity, with the oldest open defects listed"></a><figcaption>Half of open defects are 15+ days old</figcaption></figure>
+</div>
+
+<h3 style="margin-top:22px">Artifact 3: SQL Analysis</h3>
+<div class="grid">
+<figure><a href="delivery-health/sql-team-scorecard.png"><img loading="lazy" src="delivery-health/sql-team-scorecard.png" alt="SQL team scorecard query using CTEs and a JOIN, with results for four teams"></a><figcaption>Team scorecard: CTEs + JOIN</figcaption></figure>
+<figure><a href="delivery-health/sql-escape-rate.png"><img loading="lazy" src="delivery-health/sql-escape-rate.png" alt="SQL query of production escape rate by sprint using CASE WHEN"></a><figcaption>Escape rate by sprint: CASE WHEN keeps zero-escape sprints</figcaption></figure>
+<figure><a href="delivery-health/sql-say-do-by-team.png"><img loading="lazy" src="delivery-health/sql-say-do-by-team.png" alt="SQL query of Say/Do ratio by team using GROUP BY"></a><figcaption>Say/Do by team: GROUP BY</figcaption></figure>
+</div>
+
+<div class="card" style="margin-top:22px"><h3>Recommendations</h3><ul>
+<li>Run a short root-cause review on every production escape, starting with the two worst sprints</li>
+<li>Set an aging limit: any Sev 2 open longer than 14 days is raised at the weekly sync</li>
+<li>Start with Digital Banking, which holds the most open defects (7) and production escapes (6)</li></ul></div>
+
+<p><a class="btn" href="delivery-health/delivery_health_analysis.sql">SQL queries</a> <a class="btn" href="delivery-health/delivery_health_sample_data.xlsx">Sample data (Excel)</a> <a class="btn" href="delivery-health/delivery_health.db">SQLite database</a></p>
+
+<h3 style="margin-top:22px">Tools &amp; Methods</h3>
+<div class="chips"><span>Power BI</span><span>DAX</span><span>Data Modeling</span><span>Conditional Formatting</span><span>SQL</span><span>SQLite</span><span>CTEs &amp; JOINs</span><span>CASE WHEN</span><span>Excel</span><span>Data Validation</span></div>
+</section>
+
+<section id="case3">
+<h2>Case Study 3: Systems Integration Requirements</h2>
 <p class="sub">CRM &rarr; Billing &rarr; Reporting</p>
 <div class="note">A sanitized portfolio example demonstrating business, functional, data, and integration requirements across connected CRM, billing, and reporting systems. No production data, customer information, credentials, or proprietary system details are included.</div>
 
@@ -134,11 +184,11 @@ footer a{color:var(--amber)}
 <div class="wide"><table>
 <tr><th>Source System</th><th>Source Field</th><th>Target System</th><th>Target Field</th><th>Business Rule</th></tr>
 <tr><td>CRM</td><td>Customer ID</td><td>Billing</td><td>Customer ID</td><td>Must match the expected customer record</td></tr>
-<tr><td>CRM</td><td>Customer Status</td><td>Billing</td><td>Account Status</td><td>Map approved status values</td></tr>
+<tr><td>CRM</td><td>Customer Status</td><td>Billing</td><td>Account Status</td><td>Active &rarr; Active; Suspended &rarr; On Hold; Closed &rarr; Closed. Any other value is an exception.</td></tr>
 <tr><td>Billing</td><td>Invoice ID</td><td>Reporting</td><td>Invoice ID</td><td>Maintain a unique identifier</td></tr>
 <tr><td>Billing</td><td>Invoice Amount</td><td>Reporting</td><td>Amount</td><td>Validate numeric value and expected format</td></tr>
 <tr><td>Billing</td><td>Invoice Date</td><td>Reporting</td><td>Billing Date</td><td>Apply the required date format</td></tr>
-<tr><td>Billing</td><td>Invoice Status</td><td>Reporting</td><td>Invoice Status</td><td>Map source values to reporting values</td></tr>
+<tr><td>Billing</td><td>Invoice Status</td><td>Reporting</td><td>Invoice Status</td><td>Open &rarr; Outstanding; Paid &rarr; Paid; Void &rarr; Cancelled</td></tr>
 </table></div>
 <p><em>Illustrative example using sanitized field names and business rules.</em></p>
 
@@ -154,7 +204,7 @@ footer a{color:var(--amber)}
 <div class="wide"><table>
 <tr><th>Scenario</th><th>Expected Behavior</th></tr>
 <tr><td>Required field missing</td><td>Record fails validation and is flagged for review</td></tr>
-<tr><td>Invalid value</td><td>Record is rejected or routed for review</td></tr>
+<tr><td>Invalid value</td><td>Record is held in the exception queue for review and is not loaded</td></tr>
 <tr><td>Source/target mismatch</td><td>Mapping or transformation rule is reviewed</td></tr>
 <tr><td>Duplicate record</td><td>Duplicate is identified and prevented from creating incorrect downstream data</td></tr>
 <tr><td>Downstream reporting mismatch</td><td>Source data, mapping, and transformation are reviewed</td></tr>
@@ -166,13 +216,13 @@ footer a{color:var(--amber)}
 <tr><th>UAT Scenario</th><th>Expected Result</th></tr>
 <tr><td>Valid customer record</td><td>Record transfers successfully</td></tr>
 <tr><td>Missing required field</td><td>Record is flagged as an exception</td></tr>
-<tr><td>Invalid status</td><td>Record is rejected or flagged for review</td></tr>
+<tr><td>Invalid status</td><td>Record is held in the exception queue and is not loaded</td></tr>
 <tr><td>Billing/reporting mismatch</td><td>Data discrepancy is identified for investigation</td></tr>
 </table></div>
 <p>When defects were identified, they were reviewed with the appropriate stakeholders, corrected, retested, and validated against the original requirement.</p>
 
 <h3 style="margin-top:22px">Outcome</h3>
-<div class="card"><p>The integration requirements were documented in a format that gave development and QA clearer expectations for data movement, validation, exception handling, and acceptance. I supported UAT through production go-live by defining test scenarios, coordinating execution, validating downstream reporting data, and working with stakeholders to resolve defects and requirement questions.</p>
+<div class="card"><p>The integration requirements were documented in a format that gave development and QA clearer expectations for data movement, validation, exception handling, and acceptance. Every UAT scenario traces back to a documented requirement, so passing a test means the requirement is met, and every exception has one defined behavior.</p>
 <p><b>Business need &rarr; integration requirements &rarr; development &rarr; validation &rarr; UAT &rarr; release</b></p></div>
 
 <h3 style="margin-top:22px">Tools &amp; Methods</h3>
